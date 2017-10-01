@@ -447,3 +447,14 @@ done:
   }
   AddDocumentCtx_Free(aCtx);
 }
+
+DocumentField *Document_GetField(Document *d, const char *fieldName) {
+  if (!d || !fieldName) return NULL;
+
+  for (int i = 0; i < d->numFields; i++) {
+    if (!strcasecmp(d->fields[i].name, fieldName)) {
+      return &d->fields[i];
+    }
+  }
+  return NULL;
+}
